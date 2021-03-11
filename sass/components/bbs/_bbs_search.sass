@@ -1,0 +1,61 @@
+section
+    >.container
+        position: relative
+
+.bbs-search
+    position: relative
+    top: 0
+    right: 0
+    +for-rp(mobile tablet)
+        position: relative
+    select
+        width: 210px
+        height: 45px
+        vertical-align: middle
+        background: url(../images/common/reuse/down_arrow_2.png) right 15px center no-repeat
+        border: 1px solid #ddd
+        color: #333
+        font-size: 16px
+        padding-left: 25px
+        -webkit-appearance: none
+        max-width: 330px
+        +for-rp(mb )
+            width: 100%
+            margin-bottom: 5px
+    .search-wrap
+        +for-rp(mb)
+            max-width: 330px
+    .search
+        width: 300px
+        height: 45px
+        border: 1px solid #ddd
+        padding-left: 10px
+        color: #666
+        font-size: 14px
+        +for-rp(mb)
+            width: 85%
+    .search::placeholder
+        color: #919191
+        font-weight: bold
+
+    input[type="text"]
+        +for-rp(mobile )
+            width: 80%
+
+    .search-btn
+        background: url("../images/common/reuse/search_white.png") center no-repeat
+        font-size: 0 !important
+        width: 45px !important
+        height: 45px !important
+        background-color: #333
+        transition: all 0.1s ease-in
+        +for-rp(mobile)
+            display: inline-block
+            width: 19%
+        &:hover
+            background-color: #000
+
+// Type 2
+.bbs-search.type-2
+    text-align: right
+    select

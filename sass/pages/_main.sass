@@ -1,0 +1,50 @@
+
+#main
+    .section-1
+        .main-visual-slider
+            max-height: 600px
+            overflow: hidden
+        .slide
+            background: url('../images/main/main_visual_01.jpg')
+            height: 600px
+            position: relative
+            .center-box
+                position: absolute
+                left: 50%
+                top: 31%
+                transform: translateX(-50%)
+                color: #fff
+                text-align: center
+
+                .title
+                    font-size: 50px
+                    font-weight: 500
+                .text
+                    font-size: 20px
+                    margin-top: 10px
+
+    .section-2
+        padding: 40px 0
+        .row
+            justify-content: space-between
+            +for-rp(tb pc)
+                display: flex
+            .col
+                padding: 20px
+                text-align: center
+                +for-rp(tb pc)
+                    width: 33.33%
+                &:nth-child(2)
+                    +for-rp(tb pc)
+                        border-left: 1px solid #d7d7d7
+                        border-right: 1px solid #d7d7d7
+                h2
+                    font-size: 25px
+                    color: #222
+                p
+                    display: inline-block
+                    max-width: 260px
+                    margin: 0 auto
+                    color: #292929
+                    font-size: 14px
+                    margin: 18px 0 4px

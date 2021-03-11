@@ -1,0 +1,139 @@
+.product-intro
+    .container
+        >.row
+            +for-rp(pc)
+                display: flex
+            >.col-1
+                min-width: 550px
+                margin-top: 125px
+                +for-rp(pc)
+                    width: 50%
+                    position: relative
+                img
+                    display: block
+                    margin: 0 auto
+                    position: relative
+                    z-index: 2
+                .left,.right
+                    position: absolute
+                    left: 0
+                    top: -5px
+                    span
+                        display: block
+                        position: relative
+                        font-size: 14px
+                        color: #666
+                        &.on,a:hover
+                            color: $red-color
+                            font-weight: bold
+                        &.on:after
+                            background-color: $red-color
+                    span
+                        &:after
+                            content: ""
+                            position: absolute
+                            display: inline-block
+                            bottom: -5px
+                            left: 0
+                            width: 274px
+                            height: 1px
+                            background-color: #999
+                        &.on:after
+                            height: 2px
+                            background-color: $red-color
+                    span.n2
+                        margin-top: 35px
+                    span.n3
+                        margin-top: 10px
+                        &:after
+                            width: 224px
+                    span.n4
+                        margin-top: 20px
+                        &:after
+                            z-index: 3
+                    span.n5
+                        margin-top: 32px
+                    span.n6
+                        margin-top: 10px
+                        &:after
+                            width: 250px
+                    span.n7
+                        margin-top: 16px
+                        &:after
+                            width: 230px
+                    span.n8
+                        margin-top: 110px
+                        &:after
+                            width: 250px
+                    span.n9
+                        margin-top: 116px
+                        &:after
+                            width: 250px
+
+                .right
+                    position: absolute
+                    top: 62px
+                    right: 0
+                    left: auto
+                    text-align: right
+                    span
+                        &:after
+                            right: 0
+                            left: auto
+                    span.n11
+                        margin-top: 29px
+                        &:after
+                            z-index: 2
+                            width: 225px
+                    span.n12
+                        margin-top: 11px
+                        &:after
+                            z-index: 2
+                            width: 205px
+                    span.n13
+                        margin-top: 19px
+                        &:after
+                            z-index: 2
+                            width: 190px
+                    span.n14
+                        margin-top: 40px
+                        &:after
+                            width: 170px
+                    span.n15
+                        margin-top: 70px
+                        &:after
+                            width: 230px
+                    span.n16
+                        margin-top: 100px
+                        &:after
+                            width: 247px
+                            z-index: 2
+
+            >.col-2
+                margin-top: 80px
+                +for-rp(pc)
+                    margin-left: 100px
+                .list
+                    >li
+                        margin-bottom: 7px
+                    .row
+                        display: flex
+                        position: relative
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.16)
+                        &:hover
+                            box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.22)
+                            & .col-2
+                                background-color: #f4f4f4
+                        >.col-2
+                            padding: 8px 12px
+                        .btn-more
+                            right: 0
+
+                        .title
+                            font-size: 22px
+                            max-width: 240px
+                            font-weight: bold
+                        .text
+                            color: #666
+                            font-size: 14px
+                            margin-top: 14px

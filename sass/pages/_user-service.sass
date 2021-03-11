@@ -1,0 +1,272 @@
+.user-service
+    .box
+        max-width: 500px
+        margin: 0 auto
+        height: 360px
+        text-align: center
+        +for-rp(mb)
+            max-width: none
+            width: 100%
+        .title
+            font-size: 36px
+            font-weight: 700
+            color: #222
+        .sub-title
+            color: #333
+            margin-top: 12px
+            margin-bottom: 20px
+        .id-input,.pwd-input
+            width: 100%
+            border: 1px solid #e4e4e4
+            border-radius: 4px
+            height: 60px
+            margin-bottom: 6px
+            padding: 0 30px
+            font-size: 18px
+            color: #222
+            background-color: #f4f4f4
+        .id-input:placeholder,.pwd-input:placeholder
+            color: #999
+        .row
+            display: flex
+            justify-content: space-between
+            margin-top: 8px
+            @media only screen and (max-width :480px)
+                flex-direction: column
+        .right
+            display: flex
+            @media only screen and (max-width :480px)
+                justify-content: flex-end
+                margin-top: 8px
+            li
+                position: relative
+                padding: 0 10px
+                &:last-child
+                    padding-right: 0
+                &::after
+                    position: absolute
+                    right: 0
+                    content: "|"
+                    color: #999
+                    font-size: 12px
+                    top: 3px
+                &:last-child::after
+                    content: ""
+                a
+                    color: #666
+                    &:hover
+                        color: #000
+        .id-save-check-label
+            color: #666
+        .id-save-check + label
+            display: inline-block
+            position: relative
+            cursor: pointer
+        .id-save-check + label:before
+            content: ' '
+            display: inline-block
+            width: 24px
+            height: 24px
+            line-height: 24px
+            margin: -2px 8px 0 0
+            text-align: center
+            vertical-align: middle
+            background: #fff
+            border: 1px solid #e4e4e4
+            border-radius: 3px
+            box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05)
+        .id-save-check + label:active:before, .id-save-check:checked + label:active:before
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1)
+        .id-save-check:checked + label:before
+            content: '\2714'
+            color: #99a1a7
+            text-shadow: 1px 1px #fff
+            background: #e9ecee
+            border-color: #adb8c0
+            box-shadow: 0px 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1)
+
+//회원가입 스텝 네비게이션
+.sign-step
+    .step-container
+        border-bottom: 2px solid #454545
+    .step-wrap
+        display: flex
+        justify-content: space-between
+        max-width: 900px
+        margin: 0 auto
+        text-align: center
+        padding-bottom: 25px
+        +for-rp(mb tb)
+            max-width: 600px
+        +for-rp(mb)
+            max-width: 330px
+        li
+            position: relative
+            padding-top: 110px
+            width: 105px
+            background: url('../images/sub/sign_step_1_on.png') top center no-repeat
+            +for-rp(mb)
+                background: url('../images/sub/sign_step_1_sm_on.png') top center no-repeat
+                padding-top: 60px
+                width: 70px
+            &:nth-of-type(2)
+                background: url('../images/sub/sign_step_2_on.png') top center no-repeat
+                +for-rp(mb)
+                    background: url('../images/sub/sign_step_2_sm_on.png') top center no-repeat
+            &:nth-of-type(3)
+                background: url('../images/sub/sign_step_3_on.png') top center no-repeat
+                +for-rp(mb)
+                    background: url('../images/sub/sign_step_3_sm_on.png') top center no-repeat
+            &:after
+                content: ""
+                position: absolute
+                display: inline-block
+                top: 45%
+                right: -180px
+                width: 70px
+                height: 8px
+                background: url("../images/sub/sign_dots_on.png") center no-repeat
+                +for-rp(mb tb)
+                    right: -105px
+                +for-rp(mb)
+                    top: 28%
+                    right: -64px
+                    background: url("../images/sub/sign_dots_narrow_on.png") center no-repeat
+            &:last-child:after
+                background: none
+            span
+                display: block
+                color: #222
+                font-size: 18px
+            span.order
+                font-weight: 700
+                font-size: 16px
+
+.sign_step-1
+    .step-wrap
+        li
+            &:nth-of-type(2)
+                background: url('../images/sub/sign_step_2.png') top center no-repeat
+                +for-rp(mb)
+                    background: url('../images/sub/sign_step_2_sm.png') top center no-repeat
+            &:nth-of-type(3)
+                background: url('../images/sub/sign_step_3.png') top center no-repeat
+                +for-rp(mb)
+                    background: url('../images/sub/sign_step_3_sm.png') top center no-repeat
+            &:nth-of-type(1):after
+                background: url("../images/sub/sign_dots_on.png") center no-repeat
+                +for-rp(mb)
+                    background: url("../images/sub/sign_dots_narrow_on.png") center no-repeat
+            &:nth-of-type(2):after
+                background: url("../images/sub/sign_dots.png") center no-repeat
+                +for-rp(mb)
+                    background: url("../images/sub/sign_dots_narrow.png") center no-repeat
+
+.sign_step-2
+    .step-wrap
+        li
+            &:nth-of-type(3)
+                background: url('../images/sub/sign_step_3.png') top center no-repeat
+                +for-rp(mb)
+                    background: url('../images/sub/sign_step_3_sm.png') top center no-repeat
+            &:nth-of-type(2):after
+                background: url("../images/sub/sign_dots.png") center no-repeat
+
+// 회원가입 Step 1 
+.sign_step-1
+    .text-wrap
+        padding: 30px
+        border: 1px solid #ddd
+        color: #666
+        height: 260px
+
+// 회원가입 Step 2 
+.sign_step-2
+    table
+        tbody
+            th
+                color: #333
+                background-color: #f4f4f4
+            .input-id,.input-pwd,.input-pwd-2,.input-name,.input-birth
+                width: 300px
+                height: 45px
+                line-height: 45px
+                background-color: #f4f4f4
+                border-radius: 5px
+                padding: 0 20px
+                border: 1px solid #e4e4e4
+                +for-rp(mb)
+                    width: 100%
+                    max-width: 330px
+            .select-phone, .input-phone , .input-email, .select-email
+                @extend .input-id
+                width: 120px
+            .select-phone
+                min-width: 120px
+            select
+                display: inline-block
+                appearance: none
+                vertical-align: middle
+                width: 12px
+                height: 7px
+                right: 15px
+                color: #333
+                font-size: 16px
+                display: inline-block
+                background: url("../images/common/reuse/arrow_down.png") right 15px center no-repeat
+            .select-email
+                width: 210px
+                margin-left: 8px
+                +for-rp(mb)
+                    margin-left: 0
+            .line
+                display: inline-block
+                vertical-align: middle
+                margin: 0 6px
+                width: 8px
+                height: 1px
+                background-color: #333
+            .email
+                margin: 0 3px
+                font-size: 14px
+                color: #333
+
+            .guide
+                @media only screen and (max-width:850px)
+                    display: block
+            th,td
+                @media only screen and (max-width:850px)
+                    padding: 8px 10px
+            th
+                word-break: keep-all
+                +for-rp(mb)
+                padding: 0 10px
+            .id
+                .btn
+                    +for-rp(mb)
+                        width: 100%
+                        max-width: 330px
+            .max-width
+                +for-rp(mb)
+                    display: block
+                    max-width: 330px
+
+.asterisk
+    margin-right: 2px
+
+// 회원가입 Step 3 
+.sign_step-3
+    .box
+        text-align: center
+        max-width: 335px
+        margin: 0 auto
+        padding: 80px 0
+        +for-rp(mb)
+            min-width: none
+            width: 100%
+        .title
+            font-size: 45px
+            color: #000
+            margin: 25px 0 16px
+        .sub-title
+            max-width: 304px

@@ -1,0 +1,72 @@
+.container
+    max-width: $container-width
+    margin: auto
+    +for-rp(mb tb)
+        padding: 0 15px
+
+// 서브페이지 세팅
+.sub
+    .for-border
+        border-bottom: 1px solid #ddd
+    section
+        background-color: #fff
+        padding-bottom: 0px
+        margin-bottom: 160px
+
+        h1
+            font-size: 40px
+            text-align: center
+            padding: 56px 0
+            color: #222
+
+        .container > h2
+            margin-bottom: 30px
+            color: #333
+            font-size: 26px
+            font-weight: bold
+            text-align: left
+    main
+        .content
+            padding-top: 100px
+//슬릭 dot, arrow
+.slick-dots
+    position: absolute
+    bottom: 15%
+    left: 50%
+    transform: translateX(-50%)
+    @media only screen and (min-width:460px)
+        display: none
+    +for-rp(pc)
+        display: none
+    li
+        display: inline-block
+        margin: 0 4px
+        button
+            font-size: 0
+            width: 10px
+            height: 10px
+            background-color: #ccc
+            border-radius: 50%
+        &.slick-active
+            button
+                background-color: #0061bc
+
+.slick-arrow
+    position: absolute
+    top: 45%
+    left: 80px
+    z-index: 2
+    background: url('../images/common/reuse/slick_prev_arrow.png') no-repeat
+    width: 24px
+    height: 45px
+    font-size: 0
+    transition: all 0.15s ease
+    &:hover
+        background: url('../images/common/reuse/slick_prev_arrow_on.png') no-repeat
+.slick-next
+    right: 80px
+    left: auto
+    transform: rotate(180deg)
+
+.slick-slide:focus
+    outline: none

@@ -1,0 +1,51 @@
+.bbs-pagi
+    margin-top: 35px
+    text-align: center
+
+    .button
+        width: 30px
+        height: 30px
+        border: 1px solid #cdcdcd
+        display: inline-block
+        position: relative
+        margin: 0 2px
+        +for-rp(mobile)
+            margin: 0
+
+    .button:hover
+        opacity: 0.8
+
+    .button img
+        display: block
+        position: absolute
+        left: 0
+        right: 0
+        bottom: 0
+        top: 0
+        margin: auto
+
+    span
+        line-height: 1
+        display: inline-block
+        vertical-align: top
+        color: #666
+        +for-rp(mobile)
+            margin: 6px 10px
+
+    strong
+        color: #222
+        margin: 0 10px
+
+    span
+        a
+            display: inline-block
+            width: 30px
+            height: 30px
+            line-height: 27px
+            border: 1px solid #ddd
+            font-size: 14px
+            color: #666
+            margin: 0 2px
+            &.active
+                background-color: #454545
+                color: #fff

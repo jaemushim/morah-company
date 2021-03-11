@@ -1,0 +1,144 @@
+
+.bbs-wrap
+    .row
+        +for-rp(tb pc)
+            display: flex
+            justify-content: space-between
+            align-items: flex-end
+        +for-rp(mb)
+            display: flex
+            flex-direction: column-reverse
+    .total
+        font-size: 16px
+        color: #333
+        font-weight: 500
+table.bbs
+    text-align: center
+    border-top: 2px solid #333
+    letter-spacing: -0.4px
+    border-collapse: collapse
+    width: 100%
+    margin-top: 20px
+    text-align: center
+    color: #666
+    font-size: 14px
+    thead
+        tr
+            background-color: #f6f6f6
+            border-bottom: 1px solid#ccc
+            th
+                font-weight: 500
+                color: #222
+                font-size: 18px
+    tr
+        border-bottom: 1px solid #ddd
+    th,td
+        padding: 0px 20px
+        line-height: 1.5
+        height: 60px
+        font-size: 16px
+        color: #666
+        font-weight: 400
+    &> td:first-child, &>th:first-child
+        border-left: none
+    &> td:last-child, &>th:last-child
+        border-right: none
+    a:not(.btn):hover
+        text-decoration: underline
+
+    .fixed
+        background-color: #f2f8fd
+    thead
+        .title
+            padding-left: 110px
+    .title
+        text-align: left
+        a:hover
+            color: $secondary-color
+            text-decoration: underline
+    .must-badge
+        display: inline-block
+        width: 65px
+        height: 28px
+        line-height: 28px
+        background-color: $secondary-color
+        border-radius: 5px
+        font-size: 14px
+        font-weight: 500
+        color: #fff
+    //게시판 반응형
+table.bbs.mobile-take-block, table.bbs-2.mobile-take-block
+    tr
+        +for-rp(mb)
+            position: relative
+    &,tbody,tr,.title
+        +for-rp(mb)
+            display: block
+
+    .title
+        +for-rp(mb)
+            display: block
+            text-align: left
+            font-size: 18px
+    td
+        +for-rp(mb)
+            height: 30px
+            padding: 5px 15px
+    th
+        +for-rp(mb)
+            height: 30px
+            padding: 5px 15px
+            display: block
+    .order
+        +for-rp(mb)
+            font-size: 16px
+            padding: 5px 15px
+            padding-bottom: 0
+    thead
+        +for-rp(mb)
+            display: none
+    td.author,td.date
+        position: relative
+        &:after
+            position: absolute
+            content: "|"
+            right: 0
+            color: #ddd
+
+    .reply
+        background-color: #f2f8fd
+// (th,td : border 1px)
+table.bbs-2
+    @extend table.bbs
+    th,td
+        border: 1px solid #ddd
+
+table.bbs-2-h40
+    @extend table.bbs
+    th,td
+        border: 1px solid #ddd
+        height: 40px
+    th
+        background-color: #f6f6f6
+
+// 답변 화살표
+.reply
+    .title
+        &:before
+            content: ""
+            position: relative
+            width: 12px
+            height: 8px
+            display: inline-block
+            background: url(../images/common/reply_arrow.png) no-repeat
+            margin-right: 5px
+
+// 게시판 반응형 컬럼 삭제
+.bbs,.bbs-2
+    .generation,.state,.author,.hit,.date
+        @media only screen and (max-width:560px)
+            display: none
+
+// Asterisk 컬러주기
+.asterisk
+    color: #c83838

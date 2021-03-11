@@ -1,0 +1,34 @@
+.product-intro,.product-intro_list
+    .content
+        padding-top: 0 !important
+        .for-bg
+            background-color: #f4f4f4
+            max-height: 142px
+            .container
+                padding: 20px 5px 0 5px
+                +for-rp(tb pc)
+                    padding: 20px 50px
+                .product-nav
+                    +for-rp(mb)
+                        margin-right: -50px
+                    >div
+                        cursor: pointer
+                        vertical-align: middle
+                        .title
+                            font-size: 14px
+                            color: #222
+                    .slick-slide
+                        img
+                            margin: 5px auto
+                    .slick-arrow
+                        background: url("../images/common/reuse/slick_prev_arrow_2_on.png") center no-repeat
+                        top: 30%
+                        left: -50px
+                        +for-rp(mb tb)
+                            display: none !important
+
+                        &:hover
+                            opacity: 0.6
+                    .slick-next
+                        left: auto
+                        right: -50px

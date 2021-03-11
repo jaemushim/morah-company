@@ -1,0 +1,437 @@
+// 심재무의 CSS 프레임워크
+// @author 코드명인 퍼블리셔팀 심재무
+// @history 2021-03-06 created (0.0.1)
+
+//
+//
+//★★★ Responsive Tool ★★★ ( 직접 @include 해서 사용하기)
+
+// 사용법
+// .example
+//     background: white
+//     =for-rp(mb tb pc)
+//         height: 70px
+
+// !!환경설정
+// pc 컨테이너값 및 브레이크 포인트 설정
+$size__site_content_width: 1200px;
+$media_queries: (
+    'sm': 'only screen and (max-width:480px)',
+    'mb': 'only screen and (max-width: 768px)',
+    'tb': 'only screen and (min-width: 768px) and (max-width: #{$size__site_content_width})',
+    'pc': 'only screen and (min-width: (#{$size__site_content_width}))',
+);
+// for responsive
+@mixin for-rp($breakpoints) {
+    $conditions: ();
+    @each $breakpoint in $breakpoints {
+        $conditions: append($conditions, #{inspect(map-get($media_queries, $breakpoint))}, comma);
+    }
+
+    @media #{$conditions} {
+        @content;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// ★★★ Utilities ★★★ (클래스 생성기)
+
+// !! 환경설정
+
+// 반응형 브레이크 포인트 설정
+$grid-breakpoints-custom: (
+    // Extra small screen / phone (ALL)
+    all: 0,
+    // Small screen / phone
+    sm: 480px,
+    // Medium screen / tablet
+    md: 768px,
+    // Large screen / desktop
+    lg: 1200px,
+    // Extra large screen / wide desktop
+    //  xl: 1280px
+) !default;
+
+// margin, padding 값 설정
+$space-values: (0, 3, 5, 10, 15, 20, 25, 30, 40, 45, 50, 60, 70, 80) !default;
+
+// display 값 설정
+$display-values: (block, inline-block, inline, flex, table, none) !default;
+
+// font size 값 설정
+$font-size-values: (12, 13, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40) !default;
+
+// 폰트 컬러 설정
+$font-color-values: ('000', 222, 333, 555, 777, 999, aaa, ccc, eee, fff) !default;
+
+// 폰트 굵기 설정
+$font-weight-values: (
+    light: 300,
+    normal: 400,
+    medium: 500,
+    bold: 700,
+) !default;
+
+// Width 설정
+$width-values: (
+    full: 100%,
+    auto: auto,
+    95: 95%,
+    90: 90%,
+);
+// ★ Spacing utilities ★
+
+$space-prefixes: (
+    p: padding,
+    pt: padding-top,
+    pr: padding-right,
+    pb: padding-bottom,
+    pl: padding-left,
+    px: (
+        padding-left,
+        padding-right,
+    ),
+    py: (
+        padding-top,
+        padding-bottom,
+    ),
+    m: margin,
+    mt: margin-top,
+    mr: margin-right,
+    mb: margin-bottom,
+    ml: margin-left,
+    mx: (
+        margin-left,
+        margin-right,
+    ),
+    my: (
+        margin-top,
+        margin-bottom,
+    ),
+) !default;
+
+$breakpoints: $grid-breakpoints-custom;
+
+@mixin make-space($values, $prefixes, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0
+        @if ($breakpoint-value == 0) {
+            @each $attr-short, $attr-long in $prefixes {
+                @if (
+                    $attr-short !=
+                        'px' and
+                        $attr-short !=
+                        'py' and
+                        $attr-short !=
+                        'mx' and
+                        $attr-short !=
+                        'my'
+                ) {
+                    @each $value in $values {
+                        @if ($breakpoint-name != 'all') {
+                            .#{$breakpoint-name}\:#{$attr-short}-#{$value} {
+                                #{$attr-long}: #{$value}#{'px'} !important;
+                            }
+                        } @else {
+                            .#{$attr-short}-#{$value} {
+                                #{$attr-long}: #{$value}#{'px'} !important;
+                            }
+                        }
+                    }
+                } @else {
+                    @each $value in $values {
+                        @if ($breakpoint-name != 'all') {
+                            .#{$breakpoint-name}\:#{$attr-short}-#{$value} {
+                                @each $i in $attr-long {
+                                    #{$i}: #{$value}#{'px'} !important;
+                                }
+                            }
+                        } @else {
+                            .#{$attr-short}-#{$value} {
+                                @each $i in $attr-long {
+                                    #{$i}: #{$value}#{'px'} !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $attr-short, $attr-long in $prefixes {
+                    @if (
+                        $attr-short !=
+                            'px' and
+                            $attr-short !=
+                            'py' and
+                            $attr-short !=
+                            'mx' and
+                            $attr-short !=
+                            'my'
+                    ) {
+                        @each $value in $values {
+                            .#{$breakpoint-name}\:#{$attr-short}-#{$value} {
+                                #{$attr-long}: #{$value}#{'px'} !important;
+                            }
+                        }
+                    } @else {
+                        @each $value in $values {
+                            .#{$breakpoint-name}\:#{$attr-short}-#{$value} {
+                                @each $i in $attr-long {
+                                    #{$i}: #{$value}#{'px'} !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // breakpoint values that not equal to 0
+    }
+}
+
+@include make-space($space-values, $space-prefixes, $breakpoints);
+
+// ★ Display Utilites ★
+
+@mixin make-display($values, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0
+        @if ($breakpoint-value == 0) {
+            @each $value in $values {
+                @if ($breakpoint-name != 'all') {
+                    .#{$breakpoint-name}\:#{$value} {
+                        #{"display"}: #{$value} !important;
+                    }
+                } @else {
+                    .#{$value} {
+                        #{"display"}: #{$value} !important;
+                    }
+                }
+            }
+        }
+        // breakpoint values that not equal to 0
+        @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $value in $values {
+                    .#{$breakpoint-name}\:#{$value} {
+                        #{"display"}: #{$value} !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-display($display-values, $breakpoints);
+
+// ★ Font Size Utilites ★
+@mixin make-font-size($values, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0
+        @if ($breakpoint-value == 0) {
+            @each $value in $values {
+                @if ($breakpoint-name != 'all') {
+                    .#{$breakpoint-name}\:text-#{$value} {
+                        #{"font-size"}: #{$value}#{'px'} !important;
+                    }
+                } @else {
+                    .text-#{$value} {
+                        #{"font-size"}: #{$value}#{'px'} !important;
+                    }
+                }
+            }
+        }
+        // breakpoint values that not equal to 0
+        @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $value in $values {
+                    @if ($breakpoint-name != 'all') {
+                        .#{$breakpoint-name}\:text-#{$value} {
+                            #{"font-size"}: #{$value}#{'px'} !important;
+                        }
+                    } @else {
+                        .text-#{$value} {
+                            #{"font-size"}: #{$value}#{'px'} !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-font-size($font-size-values, $breakpoints);
+
+// ★ Font Color Utilites ★
+@mixin make-font-color($values, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0
+        @if ($breakpoint-value == 0) {
+            @each $value in $values {
+                @if ($breakpoint-name != 'all') {
+                    .#{$breakpoint-name}\:text-#{$value} {
+                        #{"color"}: #{'#'}#{$value} !important;
+                    }
+                } @else {
+                    .text-#{$value} {
+                        #{"color"}: #{'#'}#{$value} !important;
+                    }
+                }
+            }
+        }
+        // breakpoint values that not equal to 0
+        @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $value in $values {
+                    @if ($breakpoint-name != 'all') {
+                        .#{$breakpoint-name}\:text-#{$value} {
+                            #{"color"}: #{'#'}#{$value} !important;
+                        }
+                    } @else {
+                        .text-#{$value} {
+                            #{"color"}: #{'#'}#{$value} !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-font-color($font-color-values, $breakpoints);
+
+// ★ Font Weight Utilites ★
+@mixin make-font-weight($font-weight-values, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0
+        @if ($breakpoint-value == 0) {
+            @each $name, $value in $font-weight-values {
+                @if ($breakpoint-name != 'all') {
+                    .#{$breakpoint-name}\:font-#{$name} {
+                        #{"font-weight"}: #{$value} !important;
+                    }
+                } @else {
+                    .font-#{$name} {
+                        #{"font-weight"}: #{$value} !important;
+                    }
+                }
+            }
+        }
+        // breakpoint values that not equal to 0
+        @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $name, $value in $font-weight-values {
+                    @if ($breakpoint-name != 'all') {
+                        .#{$breakpoint-name}\:font-#{$name} {
+                            #{"font-weight"}: #{$value} !important;
+                        }
+                    } @else {
+                        .font-#{$name} {
+                            #{"font-weight"}: #{$value} !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-font-weight($font-weight-values, $breakpoints);
+
+// ★ text-align Utilites ★
+@mixin make-text-align($breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0
+        @if ($breakpoint-value == 0) {
+            @if ($breakpoint-name != 'all') {
+                .#{$breakpoint-name}\:text-left {
+                    #{"text-align"}: left !important;
+                }
+                .#{$breakpoint-name}\:text-right {
+                    #{"text-align"}: right !important;
+                }
+                .#{$breakpoint-name}\:text-center {
+                    #{"text-align"}: center !important;
+                }
+            } @else {
+                .text-left {
+                    #{"text-align"}: left !important;
+                }
+                .text-right {
+                    #{"text-align"}: right !important;
+                }
+                .text-center {
+                    #{"text-align"}: center !important;
+                }
+            }
+        }
+        // breakpoint values that not equal to 0
+        @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @if ($breakpoint-name != 'all') {
+                    .#{$breakpoint-name}\:text-left {
+                        #{"text-align"}: left !important;
+                    }
+                    .#{$breakpoint-name}\:text-right {
+                        #{"text-align"}: right !important;
+                    }
+                    .#{$breakpoint-name}\:text-center {
+                        #{"text-align"}: center !important;
+                    }
+                } @else {
+                    .text-left {
+                        #{"text-align"}: left !important;
+                    }
+                    .text-right {
+                        #{"text-align"}: right !important;
+                    }
+                    .text-center {
+                        #{"text-align"}: center !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-text-align($breakpoints);
+
+// ★ Width Utilites ★
+@mixin make-width($font-weight-values, $breakpoints) {
+    @each $breakpoint-name, $breakpoint-value in $breakpoints {
+        // if xs value = 0
+        @if ($breakpoint-value == 0) {
+            @each $name, $value in $font-weight-values {
+                @if ($breakpoint-name != 'all') {
+                    .#{$breakpoint-name}\:width-#{$name} {
+                        #{"width"}: #{$value} !important;
+                    }
+                } @else {
+                    .width-#{$name} {
+                        #{"width"}: #{$value} !important;
+                    }
+                }
+            }
+        }
+        // breakpoint values that not equal to 0
+        @else {
+            @media screen and (min-width: $breakpoint-value) {
+                @each $name, $value in $font-weight-values {
+                    @if ($breakpoint-name != 'all') {
+                        .#{$breakpoint-name}\:width-#{$name} {
+                            #{"width"}: #{$value} !important;
+                        }
+                    } @else {
+                        .width-#{$name} {
+                            #{"width"}: #{$value} !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include make-width($width-values, $breakpoints);

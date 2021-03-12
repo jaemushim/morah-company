@@ -50,58 +50,71 @@ $(function () {
     $('.product-intro .row .col-1 a').hover(function () {
         $(this).parent().toggleClass('on');
     });
-});
-$('.product-nav').slick({
-    infinite: true,
-    slidesToShow: 8,
-    slidesToScroll: 3,
-    arrows: true,
-    speed: 300,
-    responsive: [
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 6,
-                slidesToScroll: 3,
-            },
-        },
-        {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 2,
-            },
-        },
-    ],
-});
 
-$('.product-list-slider').slick({
-    infinite: true,
-    slidesToShow: 4,
-    slidesToScroll: 3,
-    arrows: true,
-    speed: 300,
-    responsive: [
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
+    // 제품소개 네비게이션
+    $('.product-nav').slick({
+        infinite: true,
+        slidesToShow: 8,
+        slidesToScroll: 3,
+        arrows: true,
+        speed: 300,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 3,
+                },
             },
-        },
-        {
-            breakpoint: 600,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 1,
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 2,
+                },
             },
-        },
-        {
-            breakpoint: 400,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1,
+        ],
+    });
+
+    // 제품소개_리스트 슬라이더
+    $('.product-list-slider').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 3,
+        arrows: true,
+        speed: 300,
+        responsive: [
+            {
+                breakpoint: 920,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                },
             },
-        },
-    ],
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
+            {
+                breakpoint: 400,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
+    });
+
+    // 제품 상세 페이지 슬라이더
+    $('.product-slider').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        dots: true,
+        speed: 300,
+    });
 });

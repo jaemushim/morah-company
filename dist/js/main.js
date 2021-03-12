@@ -13,19 +13,23 @@ $(function () {
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
+        dots: true,  
         fade: true,
         speed: 1000,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    arrows: false,
+                },
+            },
+        ],
     });
 
     // GNB 드롭다운메뉴
-    $('.gnb .dept-1>li>a, .gnb .dept-2').hover(
-        function () {
-            $(this).parent().find('.dept-2').css('display', 'block');
-        },
-        function () {
-            $(this).parent().find('.dept-2').css('display', 'none');
-        }
-    );
+    $('.gnb .dept-1>li>a, .gnb .dept-2').hover(function () {
+        $('.dept-2').toggleClass('hovered');
+    });
 
     // 서브페이지 현재 메뉴
     $('.subpage-curr .dept-1 a')
@@ -117,4 +121,19 @@ $(function () {
         dots: true,
         speed: 300,
     });
+
+    // 모바일 GNB
+    $('.btn-ham').click(function () {
+        $('.gnb .dept-1').toggleClass('active');
+    });
+    $('.btn-m-gnb-close').click(function () {
+        $('.gnb .dept-1').removeClass('active');
+    });
+    $('.gnb .dept-1>li>a')
+        .not('.single')
+        .click(function (e) {
+            $(this).parent().toggleClass('active');
+            e.preventDefault();
+            console.log('ok');
+        });
 });

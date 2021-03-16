@@ -3621,6 +3621,12 @@ select {
   bottom: 40px;
 }
 
+@media only screen and (min-width: 1200px) {
+  .slick-dots {
+    bottom: 60px;
+  }
+}
+
 .slick-dots li button {
   width: 80px;
   height: 6px;
@@ -3826,6 +3832,10 @@ table.bbs tr, table.bbs-2 tr, table.bbs-2-h40 tr {
   border-bottom: 1px solid #ddd;
 }
 
+table.bbs tr:hover, table.bbs-2 tr:hover, table.bbs-2-h40 tr:hover {
+  background-color: #f6f6f6;
+}
+
 table.bbs th, table.bbs-2 th, table.bbs-2-h40 th, table.bbs td, table.bbs-2 td, table.bbs-2-h40 td {
   padding: 0px 20px;
   line-height: 1.5;
@@ -3847,8 +3857,8 @@ table.bbs a:not(.btn):hover, table.bbs-2 a:not(.btn):hover, table.bbs-2-h40 a:no
   text-decoration: underline;
 }
 
-table.bbs .fixed, table.bbs-2 .fixed, table.bbs-2-h40 .fixed {
-  background-color: #f2f8fd;
+table.bbs .fixed .title, table.bbs-2 .fixed .title, table.bbs-2-h40 .fixed .title {
+  color: #0095d8;
 }
 
 table.bbs thead .title, table.bbs-2 thead .title, table.bbs-2-h40 thead .title {
@@ -3963,8 +3973,14 @@ table.bbs-2-h40 th {
   margin-right: 5px;
 }
 
-@media only screen and (max-width: 560px) {
+@media only screen and (max-width: 626px) {
   .bbs .generation, .bbs .state, .bbs .author, .bbs .hit, .bbs .date, .bbs-2 .generation, .bbs-2 .state, .bbs-2 .author, .bbs-2 .hit, .bbs-2 .date {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px), only screen and (min-width: 768px) and (max-width: 1200px) {
+  .bbs .date, .bbs-2 .date {
     display: none;
   }
 }
@@ -4197,12 +4213,31 @@ section > .container {
   position: relative;
 }
 
+@media only screen and (max-width: 768px), only screen and (min-width: 768px) and (max-width: 1200px) {
+  .bbs_read section .board-view > ul .right > * {
+    font-size: 14px;
+    padding: 0 8px;
+  }
+}
+
+@media only screen and (max-width: 768px), only screen and (min-width: 768px) and (max-width: 1200px) {
+  .bbs_read section .board-view > ul .right > *:first-child {
+    padding-left: 0;
+  }
+}
+
 .bbs_read section .board-view > ul .right > *:after {
   content: "|";
   position: absolute;
   right: 0;
   font-size: 12px;
   color: #e4e4e4;
+}
+
+@media only screen and (max-width: 768px) {
+  .bbs_read section .board-view > ul .right > *:after {
+    right: -2px;
+  }
 }
 
 .bbs_read section .board-view > ul .right > *:last-child:after {
@@ -4221,6 +4256,12 @@ section > .container {
 @media only screen and (max-width: 768px), only screen and (min-width: 768px) and (max-width: 1200px) {
   .bbs_read section .board-view > ul .hit, .bbs_read section .board-view > ul .date, .bbs_read section .board-view > ul .author {
     margin-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bbs_read section .board-view > ul .hit, .bbs_read section .board-view > ul .date, .bbs_read section .board-view > ul .author {
+    margin-left: 0;
   }
 }
 
@@ -4618,6 +4659,7 @@ section > .container {
 .gnb .dept-1 {
   display: none;
   position: relative;
+  z-index: 5;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -4879,6 +4921,19 @@ section > .container {
   position: relative;
 }
 
+.gnb .m-gnb-top ul li:after {
+  content: "|";
+  position: absolute;
+  right: -8px;
+  display: inline-block;
+  color: #d7d7d7;
+  font-size: 12px;
+}
+
+.gnb .m-gnb-top ul li:last-child:after {
+  content: "";
+}
+
 .gnb .m-gnb-top .btn-m-gnb-close {
   position: absolute;
   right: 20px;
@@ -4888,6 +4943,21 @@ section > .container {
   height: 20px;
   background: url("../images/common/reuse/close.png") no-repeat;
   font-size: 0;
+}
+
+.main.active {
+  position: relative;
+}
+
+.main.active:after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .footer {
@@ -4901,9 +4971,18 @@ section > .container {
   color: #e4e4e4;
 }
 
+@media only screen and (max-width: 550px) {
+  .footer .footer-nav {
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #777;
+  }
+}
+
 .footer .footer-nav > li {
   margin-right: 18px;
   display: inline-block;
+  position: relative;
 }
 
 @media only screen and (max-width: 768px) {
@@ -4914,6 +4993,18 @@ section > .container {
 
 .footer .footer-nav > li a:hover {
   text-decoration: underline;
+}
+
+.footer .footer-nav > li:after {
+  content: "|";
+  position: absolute;
+  right: -10px;
+  font-size: 12px;
+  color: #777;
+}
+
+.footer .footer-nav > li:last-child:after {
+  content: "";
 }
 
 .footer .content {
@@ -5074,7 +5165,9 @@ section > .container {
 }
 
 .product-intro .content .for-bg .container .product-nav > div .title, .product-intro_list .content .for-bg .container .product-nav > div .title {
+  display: inline-block;
   font-size: 14px;
+  line-height: 0.9;
   color: #222;
 }
 
@@ -5608,6 +5701,14 @@ section > .container {
   font-size: 16px;
 }
 
+.sign-step thead tr {
+  background-color: #fff;
+}
+
+.sign-step tr:hover {
+  background-color: #fff !important;
+}
+
 .sign_step-1 .step-wrap li:nth-of-type(2) {
   background: url("../images/sub/sign_step_2.png") top center no-repeat;
 }
@@ -5634,7 +5735,7 @@ section > .container {
 
 @media only screen and (max-width: 768px) {
   .sign_step-1 .step-wrap li:nth-of-type(1):after {
-    background: url("../images/sub/sign_dots_narrow_on.png") center no-repeat;
+    background: url("../images/sub/sign_dots_narrow.png") center no-repeat;
   }
 }
 
@@ -5692,7 +5793,7 @@ section > .container {
 }
 
 .sign_step-2 table tbody .select-phone, .sign_step-2 table tbody .input-phone, .sign_step-2 table tbody .input-email, .sign_step-2 table tbody .select-email {
-  width: 120px;
+  width: 120px !important;
 }
 
 .sign_step-2 table tbody .select-phone {
@@ -5713,7 +5814,7 @@ section > .container {
 }
 
 .sign_step-2 table tbody .select-email {
-  width: 210px;
+  width: 210px !important;
   margin-left: 8px;
 }
 
@@ -5850,7 +5951,7 @@ section > .container {
 .product-intro .content .container > .row > .col-1 .left, .product-intro .content .container > .row > .col-1 .right {
   position: absolute;
   left: 0;
-  top: 15px;
+  top: 0px;
 }
 
 @media only screen and (max-width: 768px) {
@@ -5881,6 +5982,7 @@ section > .container {
   display: inline-block;
   left: 0;
   width: 274px;
+  bottom: -1px;
   height: 1px;
   background-color: #999;
 }
@@ -6045,7 +6147,7 @@ section > .container {
 
 .product-intro .content .container > .row > .col-1 .right {
   position: absolute;
-  top: 86px;
+  top: 66px;
   right: 0;
   left: auto;
   text-align: right;

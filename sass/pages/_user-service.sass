@@ -141,7 +141,12 @@
             span.order
                 font-weight: 700
                 font-size: 16px
-
+    thead
+        tr
+            background-color: #fff
+    tr
+        &:hover
+            background-color: #fff !important
 .sign_step-1
     .step-wrap
         li
@@ -156,7 +161,7 @@
             &:nth-of-type(1):after
                 background: url("../images/sub/sign_dots_on.png") center no-repeat
                 +for-rp(mb)
-                    background: url("../images/sub/sign_dots_narrow_on.png") center no-repeat
+                    background: url("../images/sub/sign_dots_narrow.png") center no-repeat
             &:nth-of-type(2):after
                 background: url("../images/sub/sign_dots.png") center no-repeat
                 +for-rp(mb)
@@ -200,7 +205,7 @@
                     max-width: 330px
             .select-phone, .input-phone , .input-email, .select-email
                 @extend .input-id
-                width: 120px
+                width: 120px !important
             .select-phone
                 min-width: 120px
             select
@@ -215,7 +220,7 @@
                 display: inline-block
                 background: url("../images/common/reuse/arrow_down.png") right 15px center no-repeat
             .select-email
-                width: 210px
+                width: 210px !important
                 margin-left: 8px
                 +for-rp(mb)
                     margin-left: 0

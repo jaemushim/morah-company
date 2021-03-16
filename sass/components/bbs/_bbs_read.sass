@@ -39,13 +39,20 @@
                 >*
                     padding: 0 16px
                     position: relative
-
+                    +for-rp(mb tb)
+                        font-size: 14px
+                        padding: 0 8px
+                    &:first-child
+                        +for-rp(mb tb)
+                            padding-left: 0
                     &:after
                         content: "|"
                         position: absolute
                         right: 0
                         font-size: 12px
                         color: #e4e4e4
+                        +for-rp(mb)
+                            right: -2px
                     &:last-child:after
                         content: ""
 
@@ -57,6 +64,8 @@
                     color: #666
                 +for-rp(mb tb)
                     margin-left: 5px
+                +for-rp(mb)
+                    margin-left: 0
         .content
             padding: 30px 20px 180px 20px
             font-size: 14px

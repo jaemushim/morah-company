@@ -125,9 +125,11 @@ $(function () {
     // 모바일 GNB
     $('.btn-ham').click(function () {
         $('.gnb .dept-1').toggleClass('active');
+        $(".main").toggleClass('active');
     });
     $('.btn-m-gnb-close').click(function () {
         $('.gnb .dept-1').removeClass('active');
+        $(".main").removeClass('active');
     });
     $('.gnb .dept-1>li>a')
         .not('.single')

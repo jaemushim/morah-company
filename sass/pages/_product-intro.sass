@@ -2,26 +2,37 @@
 .product-intro
     .content
         .container
-            padding: 0 50px
+            +for-rp(pc)
+                padding: 0 50px
             >.row
                 +for-rp(pc)
                     display: flex
                 >.col-1
-                    min-width: 550px
                     margin-top: 125px
                     width: 50%
                     position: relative
                     +for-rp(mb tb)
-                        margin: 80px auto 0
+                       margin: 80px auto 0
+                    +for-rp(tb pc)
+                        min-width: 550px
+                    +for-rp(mb)
+                        width: 330px
                     img
                         display: block
                         margin: 0 auto
                         position: relative
                         z-index: 2
+                        +for-rp(mb)
+                            width: 160px
+                            height: 430px
+                    
                     .left,.right
                         position: absolute
                         left: 0
-                        top: -5px
+                        top: 15px   
+                        +for-rp(mb)
+                            top: -6px
+
                         span
                             display: block
                             position: relative
@@ -37,9 +48,11 @@
                                 content: ""
                                 position: absolute
                                 display: inline-block
-                                bottom: -5px
                                 left: 0
                                 width: 274px
+                                +for-rp(mb)
+                                    width: 160px
+                                    bottom: -1px
                                 height: 1px
                                 background-color: #999
                             &.on:after
@@ -49,41 +62,73 @@
                             &:after
                                 width: 265px
                                 z-index: 2
+                                +for-rp(mb)
+                                  width: 160px
                         span.n2
                             margin-top: 35px
+                            +for-rp(mb)
+                                margin-top: 18px
+                                width: 140px
                         span.n3
                             margin-top: 10px
+                            +for-rp(mb)
+                                margin-top: 5px
                             &:after
                                 width: 224px
+                                +for-rp(mb)
+                                    width: 130px
+                                    
                         span.n4
                             margin-top: 20px
+                            +for-rp(mb)
+                                margin-top: 14px
                             &:after
                                 z-index: 3
                         span.n5
                             margin-top: 32px
+                            +for-rp(mb)
+                                margin-top: 14px
                         span.n6
                             margin-top: 10px
+                            +for-rp(mb)
+                                margin-top: 6px
                             &:after
                                 width: 250px
+                                +for-rp(mb)
+                                     width: 150px
                         span.n7
                             margin-top: 16px
+                            +for-rp(mb)
+                                margin-top: 6px
                             &:after
                                 width: 230px
+                                +for-rp(mb)
+                                    width: 140px
                         span.n8
                             margin-top: 110px
+                            +for-rp(mb)
+                                    margin-top: 76px
                             &:after
                                 width: 250px
+                                +for-rp(mb)
+                                    width: 140px
                         span.n9
                             margin-top: 116px
+                            +for-rp(mb)
+                                margin-top: 80px
                             &:after
                                 width: 250px
+                                +for-rp(mb)
+                                    width: 140px
 
                     .right
                         position: absolute
-                        top: 62px
+                        top: 86px
                         right: 0
                         left: auto
                         text-align: right
+                        +for-rp(mb)
+                            top: 44px
                         span
                             &:after
                                 right: 0
@@ -91,32 +136,56 @@
 
                         span.n11
                             margin-top: 29px
+                            +for-rp(mb)
+                                margin-top: 14px
                             &:after
                                 z-index: 2
                                 width: 225px
+                                +for-rp(mb)
+                                    width: 132px
                         span.n12
                             margin-top: 11px
+                            +for-rp(mb)
+                                margin-top: 6px
                             &:after
                                 z-index: 2
                                 width: 205px
+                                +for-rp(mb)
+                                    width: 122px
                         span.n13
                             margin-top: 19px
+                            +for-rp(mb)
+                                margin-top: 8px
                             &:after
                                 z-index: 2
                                 width: 190px
+                                +for-rp(mb)
+                                    width: 110px
                         span.n14
                             margin-top: 40px
+                            +for-rp(mb)
+                                margin-top: 26px
                             &:after
                                 width: 170px
+                                +for-rp(mb)
+                                    width: 100px
                         span.n15
                             margin-top: 70px
+                            +for-rp(mb)
+                                margin-top: 40px
                             &:after
                                 width: 230px
+                                +for-rp(mb)
+                                    width: 140px
                         span.n16
                             margin-top: 100px
+                            +for-rp(mb)
+                                margin-top: 70px
                             &:after
                                 width: 247px
                                 z-index: 2
+                                +for-rp(mb)
+                                    width: 150px
 
                 >.col-2
                     width: 50%
@@ -188,6 +257,10 @@
             display: flex
         .col-1
             max-width: 650px
+            +for-rp(tb)
+                max-width: 390px
+            +for-rp(mb)
+                max-width: 100%
             .slick-arrow
                 background: url(../images/common/reuse/slick_prev_arrow_2_on.png) no-repeat
                 left: 25px
@@ -196,19 +269,15 @@
                 right: 25px
                 &:hover
                     background: url(../images/common/reuse/slick_prev_arrow.png) no-repeat
-            .slick-dots
-                bottom: 40px
-                li
-                    button
-                        width: 80px
-                        height: 6px
-                        border-radius: 5px
-                        background-color: #bbb
-                    &.slick-active
-                        button
-                            background-color: #3c3c3c
+            +for-rp(mb)
+                margin: 0 auto
         .col-2
-            margin-left: 100px
+            margin-left: 30px
+            +for-rp(pc)
+                margin-left: 100px
+            +for-rp(mb)
+                margin-left: 0
+                margin-top: 30px
             h2
                 padding-bottom: 16px
                 border-bottom: 2px solid $forth-color
@@ -237,6 +306,11 @@
             bottom: -80px
             z-index: -0
             background-color: $forth-color
+            +for-rp(tb)
+                height: 120px
+                bottom: -80px
+            +for-rp(mb)
+                display: none
     .bottom
         position: relative
         top: 80px

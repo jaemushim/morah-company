@@ -28,7 +28,7 @@ $(function () {
 
     // GNB 드롭다운메뉴
     $('.gnb .dept-1>li>a, .gnb .dept-2').hover(function () {
-        $('.dept-2').toggleClass('hovered');
+        $(this).parent().find($('.dept-2')).toggleClass('hovered');
     });
 
     // 서브페이지 현재 메뉴

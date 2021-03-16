@@ -14,6 +14,8 @@
         position: relative
         @include for-rp(pc)
             display: flex
+            margin-left: 50px
+        @media only screen and (min-width:1560px)
             margin-left: 430px
         +for-rp(mb tb)
             width: 100vw
@@ -51,7 +53,8 @@
                     background-color: #0d3e80
                     z-index: -1
             &.active
-                background-color: $dark-color
+                +for-rp(mb tb)
+                    background-color: $dark-color
                 >a
                     &:after
                         transform: rotate(180deg)

@@ -28,7 +28,7 @@
     main
         .content
             padding-top: 100px
-//슬릭 dot, arrow
+// 슬릭 dot, arrow
 .slick-dots
     position: absolute
     bottom: 15%
@@ -50,6 +50,20 @@
         &.slick-active
             button
                 background-color: #0061bc
+
+.slick-dots
+        bottom: 40px
+        li
+            button
+                width: 80px
+                height: 6px
+                border-radius: 5px
+                background-color: #bbb
+                +for-rp(mb tb)
+                    width: 40px
+            &.slick-active
+                button
+                    background-color: #3c3c3c
 
 .slick-arrow
     position: absolute
